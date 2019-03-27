@@ -1,0 +1,6 @@
+services:
+    - docker
+before_install:
+    - docker pull kriw/bap:latest
+script:
+    - docker run -v $PWD:/work -t kriw/bap:latest sh -c 'cd /work && ./build_plugins.sh && make -C /work/test'
