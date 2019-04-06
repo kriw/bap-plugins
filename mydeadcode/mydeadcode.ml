@@ -50,10 +50,9 @@ let collect_vars sub =
 
 let clean_sub arch sub =
   let module Target = (val target_of_arch arch) in
-  let no_side_effects var = true in
-    (* let open Target.CPU in *)
-    (* Var.is_virtual var || is_flag var in *)
-
+  let no_side_effects var =
+    let open Target.CPU in
+    Var.is_virtual var || is_flag var in
   let filter dead t lhs blk =
     Term.filter t blk ~f:(fun p -> not(Set.mem dead (lhs p))) in
   let rec clean sub =
