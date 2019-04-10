@@ -3,4 +3,4 @@ services:
 before_install:
     - sudo chmod -R 777 $PWD
 script:
-    - sudo docker run -v $PWD:/work -t kriw/bap:latest sh -c 'cd /work && ./build_plugins.sh && make -C /work/test'
+    - sudo docker run -v $PWD:/work -t kriw/bap:1.5 sh -c 'cd /work && ./build_plugins.sh && make -C /work/test'
